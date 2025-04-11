@@ -1,11 +1,50 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { Icon } from "astro-icon/components";
+import Card from "../components/links/Card.astro";
+import Layout from "../layouts/Layout.astro";
+import { intersection } from "astro:schema";
+import type { Link } from "../types";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+
+const links: Link[] = [
+	{
+		Name: "Your Domain Does Not Exist",
+		Tags: ["captain-krb", "video", "youtube"],
+		href: "https://www.youtube.com/watch?v=Dmy3IThKO14"
+	},
+	{
+		Name: "Web Browser Engineering",
+		Tags: ["browser", "build-your-own-x", "python"],
+		href: "https://browser.engineering/ "
+	},
+	{
+		Name: "My website",
+		Tags: ["personal"],
+		href: "https://jumscrafteur.fr "
+	},
+]
+
 ---
 
 <Layout>
-	<Welcome />
+  <header class="flex justify-center items-center gap-2">
+    <div class="p-2 bg-black rounded">
+      <Icon name={"logo"} color={"white"} size={24} />
+    </div>
+    <h1 class="text-3xl text-center font-slab font-bold">Link Listed</h1>
+  </header>
+
+  <div class="flex flex-col gap-4 items-stretch w-full">
+    {links.map((link) => <Card link={link} />)}
+  </div>
+
+  <footer class="text-center font-slab px-2">
+    <p>
+      made with ❤️ by <a
+        href="https://jumscrafteur.fr"
+        class="underline hover:text-blue-500">Jumscrafteur</a
+      >
+    </p>
+  </footer>
 </Layout>

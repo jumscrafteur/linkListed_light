@@ -1,0 +1,62 @@
+---
+import type { Link } from '../../types';
+
+interface Props {
+  link: Link
+}
+
+const { link } = Astro.props;
+
+---
+
+<div
+  class="border border-black bg-white relative rounded p-2 px-2 grid grid-cols-[min-content_1fr] gap-x-2"
+>
+  <div class="bg-black size-[calc(100%+2px)] absolute -z-10 top-1 left-[-1px] rounded border-8 border-black"></div>
+  <p class="text-nowrap">{link.Name}</p>
+  <div class="sm:hidden"></div>
+  <div class="flex w-full gap-2 items-center flex-wrap col-span-2 sm:col-span-1 mb-2 sm:mb-0">
+    {
+      link.Tags.map((tag) => (
+        <p class="text-xs bg-neutral-100 border border-neutral-300 rounded-full px-2 text-nowrap">
+          {tag}
+        </p>
+      ))
+    }
+  </div>
+  <p class="text-neutral-500 text-sm col-span-2">
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hover:text-blue-500"
+    >
+      {link.href}
+    </a>
+  </p>
+  <div class="col-span-2 flex gap-2 mt-2 flex-wrap flex-col sm:flex-row">
+    <!-- {
+      files.map((file) => {
+        return (
+          <a
+            href={"http://0.0.0.0:8055/assets/" + file.id + "?download"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p class="flex gap-1 items-center border bg-neutral-100 border-neutral-300 text-sm rounded px-2 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-500">
+              <Icon
+                name={getFileIcon(file.type || "application/octet-stream")}
+              />
+              {file.filename_download}
+              <span class="text-xs opacity-50">
+                ( {formatFileSize(parseInt(file.filesize || "-1"))} )
+              </span>
+            </p>
+          </a>
+        );
+      })
+    } -->
+  </div>
+</div>
+
+<!-- <pre><code>{JSON.stringify(files,null,2)}</code></pre> -->
