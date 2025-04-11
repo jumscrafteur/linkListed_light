@@ -8,6 +8,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://jumscrafteur.github.io',
-  base: 'linkListed_light',
+  site: 'https://linklisted.jumscrafteur.fr',
 });
